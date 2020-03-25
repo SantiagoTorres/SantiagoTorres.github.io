@@ -4,6 +4,9 @@ title: Publications
 permalink: /publications/
 ---
 
+<h2>Journal Papers</h2>
+- "Towards Adding Verifiability to Web-Based Git Repositories." H. Afzali, *S. Torres-Arias*, R. Curtmola, J. Cappos. Journal of Computer Security, 2020 (Upcoming).
+
 <h2>Conference Papers</h2>
 - “in-toto: providing farm-to-table security guarantees for bits and bytes." *S. Torres-Arias*, H. Afzali, T. K. Kuppusamy, R. Curtmola, J. Cappos. 28th USENIX Security Symposium (USENIX Security '19) Santa Clara, CA 2019.
 - "Commit Signatures for Centralized Version Control Systems.", S. Vaidya, *S. Torres-Arias*, R. Curtmola, and J Cappos. 34th ICT Systems Security and Privacy Protection Conference (IFIP SEC '19). Lisbon, Portugal.
