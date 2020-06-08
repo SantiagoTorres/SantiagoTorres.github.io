@@ -5,11 +5,9 @@ permalink: /about/
 ---
 
 <span style="display: inline-block;"> 
-I’m a third-year PhD Student at NYU’s Center for Cyber Security (CCS) under
-the guidance of Prof. Cappos. Throughout my career, my interests have ranged
-from binary analysis, cryptography, Operating Systems, and Security-oriented
-software engineering. My goal is to elucidate software solutions that improve
-security and privacy for all computer users.
+I'll be joining [Purdue's ECE](https://engineering.purdue.edu/ECE) department,
+as an Assistant Professor in the fall. I do research on Secure Systems, Applied
+Cryptography and Software Supply Chain security.
 </span>
 <img style="display: inline-block; float:right;" src='/assets/me.png' class="img-responsive" alt='this should be my face :['/>
 
