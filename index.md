@@ -11,6 +11,6 @@ Here you can find information about the project's I've worked on (or currently
 work on), publications as well as some other links you may find useful.
 
 >  **NOTE: I'm currently looking for motivated students that want to work on
->  Academically-relevant, practically-minded research and sysems building. If
+>  Academically-relevant, practically-minded research and systems building. If
 >  you are a student looking for a research project don't hesitate to reach out
->  to me**
+>  to me.**

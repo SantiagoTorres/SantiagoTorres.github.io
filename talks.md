@@ -4,6 +4,7 @@ title: Talks
 permalink: /talks/
 ---
 
+- “Cloud Native Technologies Spotlight: Advancements in Serverless, Software Supply Chain Security"  The State of Cloud Native Security, Palo Alto Networks [link](https://start.paloaltonetworks.com/state-of-cloud-native-security)
 - “Introduction to Notary" KubeCon '19 [link](https://kccncna19.sched.com/event/XC8C/introduction-to-notary-justin-cappos-santiago-torres-arias-nyu).
 - “using TUF and in-toto to Tighten the Release Process" KubeCon '19 [link](https://kccncna19.sched.com/event/Uagm/using-tuf-and-in-toto-to-tighten-the-release-process-santiago-torres-arias-nyu-justin-cappos-nyu?).
 - “Securing the Software Supply Chain with in-toto" KubeCon '19 [link](https://kccncna19.sched.com/event/VGqK/securing-the-software-supply-chain-with-in-toto-santiago-torres-arias-justin-cappos-nyu).
