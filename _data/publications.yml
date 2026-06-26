@@ -1,0 +1,103 @@
+journal_papers:
+- title: 'Rust for Embedded Systems: Current State and Open Problems'
+  authors: A. Sharma, S. Sharma, S.R. Tanksalkar, S. Torres-Arias, A. Machiry
+  venue: ACM SIGSAC Conference on Computer and Communications Security (CCS)
+  year: 2024
+  link: https://doi.org/10.1145/3658644.3690258
+- title: Strategies for the Integration of Software Supply Chain Security in DevSecOps CI/CD Pipelines
+  authors: R. Chandramouli, F. Kautz, S. Torres-Arias
+  venue: NIST Special Publication 800-204D
+  year: 2024
+  doi: 10.6028/NIST.SP.800-204D
+- title: Towards Adding Verifiability to Web-Based Git Repositories
+  authors: H. Afzali, S. Torres-Arias, R. Curtmola, J. Cappos
+  venue: Journal of Computer Security
+  year: 2023
+  doi: 10.3233/JCS-220291
+magazine_articles:
+- title: 'Establishing Provenance Before Coding: Traditional and Next-Generation Software Signing'
+  authors: T.R. Schorlemmer, E.H. Burmane, K.G. Kalu, S. Torres-Arias, J.C. Davis
+  venue: IEEE Security & Privacy
+  year: 2025
+  doi: 10.1109/MSEC.2025.3500887
+- title: 'Signing in Four Public Software Package Registries: Quantity, Quality, and Influencing Factors'
+  authors: T.R. Schorlemmer, K.G. Kalu, L. Chigges, K.M. Ko, E.A. Ishgair, S. Bagchi, S. Torres-Arias
+  venue: IEEE Security & Privacy
+  year: 2025
+  doi: 10.1109/MSEC.2025.3499872
+- title: 'Sigstore: Software Signing for Everybody'
+  authors: Z. Newman, J.S. Meyers, S. Torres-Arias
+  venue: IEEE Security & Privacy Magazine
+  year: 2023
+  doi: 10.1109/MSEC.2023.3304100
+- title: 'A Viewpoint on Knowing Software: Bill of Materials Quality When You See It'
+  authors: S. Torres-Arias, D. Geer, J.S. Meyers
+  venue: IEEE Security & Privacy
+  year: 2023
+  doi: 10.1109/MSEC.2023.3304099
+- title: 'A Viewpoint on Software Supply Chain Security: Are We Getting Lost in Translation?'
+  authors: M.S. Melara, S. Torres-Arias
+  venue: IEEE Security & Privacy
+  year: 2023
+  doi: 10.1109/MSEC.2023.3304098
+conference_papers:
+- title: An Industry Interview Study of Software Signing for Supply Chain Security
+  authors: K.G. Kalu, T. Singla, C. Okafor, S. Torres-Arias, J.C. Davis
+  venue: 34th USENIX Security Symposium (USENIX Security 25)
+  year: 2025
+  page_range: 81-100
+- title: Mitigating Software Supply Chain Vulnerabilities via Zero-Trust Dependencies
+  authors: P.C. Amusuo, K.A. Robinson, T. Singla, H. Peng, A. Machiry, S. Torres-Arias, K. Kalu, J.C. Davis
+  venue: IEEE/ACM 47th International Conference on Software Engineering (ICSE)
+  year: 2025
+  link: https://doi.org/10.1145/3697364.3726854
+- title: 'SoK: A Defense-Oriented Evaluation of Software Supply Chain Security'
+  authors: E.A. Ishgair, M.S. Melara, S. Torres-Arias
+  venue: arXiv preprint arXiv:2405.14993
+  year: 2024
+  link: https://arxiv.org/abs/2405.14993
+- title: 'Speranza: Usable, Privacy-Friendly Software Signing'
+  authors: K. Merrill, Z. Newman, S. Torres-Arias, K.R. Sollins
+  venue: ACM SIGSAC Conference on Computer and Communications Security (CCS)
+  year: 2023
+  link: https://doi.org/10.1145/3576915.3623142
+- title: 'Behind the Scenes: Uncovering TLS and Server Certificate Practice of IoT Device Vendors in the Wild'
+  authors: H. Dong, H. Shu, V. Prakash, Y. Zhang, M.T. Paracha, D. Choffnes, S. Torres-Arias
+  venue: ACM Internet Measurement Conference (IMC)
+  year: 2023
+  page_range: 457-477
+- title: 'SoK: Analysis of Software Supply Chain Security by Establishing Secure Design Properties'
+  authors: C. Okafor, T.R. Schorlemmer, S. Torres-Arias, J.C. Davis
+  venue: ACM Workshop on Software Supply Chain Offensive Operations and Defenses (SOUP)
+  year: 2022
+  doi: 10.1145/3548863.3560683
+- title: 'Sigstore: Software Signing for Everybody'
+  authors: Z. Newman, J.S. Meyers, S. Torres-Arias
+  venue: ACM SIGSAC Conference on Computer and Communications Security (CCS)
+  year: 2022
+  link: https://doi.org/10.1145/3548606.3560613
+- title: 'in-toto: Providing Farm-to-Table Guarantees for Bits and Bytes'
+  authors: S. Torres-Arias, H. Afzali, T.K. Kuppusamy, R. Curtmola, J. Cappos
+  venue: 28th USENIX Security Symposium (USENIX Security 19)
+  year: 2019
+  page_range: 1393-1410
+- title: Commit Signatures for Centralized Version Control Systems
+  authors: S. Vaidya, S. Torres-Arias, R. Curtmola, J. Cappos
+  venue: IFIP International Conference on ICT Systems Security and Privacy Protection
+  year: 2019
+  page_range: 209-224
+- title: 'le-git-imate: Towards Verifiable Web-Based Git Repositories'
+  authors: H. Afzali, S. Torres-Arias, R. Curtmola, J. Cappos
+  venue: ACM Asia Conference on Computer and Communications Sciences (ASIACCS)
+  year: 2018
+  page_range: 554-567
+- title: 'On Omitting Commits and Committing Omissions: Preventing Git Metadata Tampering That (Re) Introduces Software Vulnerabilities'
+  authors: S. Torres-Arias, A.K. Ammula, R. Curtmola, J. Cappos
+  venue: 25th USENIX Security Symposium (USENIX Security 16)
+  year: 2016
+  page_range: 379-395
+- title: 'Diplomat: Using Delegations to Protect Community Repositories'
+  authors: T.K. Kuppusamy, S. Torres-Arias, V. Diaz, J. Cappos
+  venue: 13th USENIX Symposium on Networked Systems Design and Implementation (NSDI)
+  year: 2016
+  page_range: 429-442

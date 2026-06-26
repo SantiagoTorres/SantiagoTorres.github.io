@@ -1,0 +1,39 @@
+talks:
+  - title: "Cloud Native Technologies Spotlight: Advancements in Serverless, Software Supply Chain Security"
+    venue: The State of Cloud Native Security, Palo Alto Networks
+    year: 2024
+    link: https://start.paloaltonetworks.com/state-of-cloud-native-security
+  - title: "Introduction to Notary"
+    venue: KubeCon '19
+    year: 2019
+    link: https://kccncna19.sched.com/event/XC8C/introduction-to-notary-justin-cappos-santiago-torres-arias-nyu
+  - title: "Using TUF and in-toto to Tighten the Release Process"
+    venue: KubeCon '19
+    year: 2019
+    link: https://kccncna19.sched.com/event/Uagm/using-tuf-and-in-toto-to-tighten-the-release-process-santiago-torres-arias-nyu-justin-cappos-nyu
+  - title: "Securing the Software Supply Chain with in-toto"
+    venue: KubeCon '19
+    year: 2019
+    link: https://kccncna19.sched.com/event/VGqK/securing-the-software-supply-chain-with-in-toto-santiago-torres-arias-justin-cappos-nyu
+  - title: "Software Supply Chain Security"
+    venue: Continuous Delivery Summit '19
+    year: 2019
+  - title: "Software Supply Chain Security"
+    venue: JenkinsWorld & DevOps World '19
+    year: 2019
+  - title: "Open Source Summit: Security"
+    venue: DockerCon '19
+    year: 2019
+    link: https://www.youtube.com/watch?v=ZIncgXrNnd8O
+  - title: "Deep Dive: SAFE BoF"
+    venue: KubeCon & Cloud-Native Con '18
+    year: 2018
+    link: https://www.youtube.com/watch?v=VSoPHK6BVMU
+  - title: "Securing the Software Supply Chain with TUF and Docker"
+    venue: DockerCon '17
+    year: 2017
+    link: https://www.youtube.com/watch?v=SNge7-t4JRE
+  - title: "PolyPasswordHasher: No Password Left Behind"
+    venue: Army Cyber Institute Cyber Talks '15
+    year: 2015
+    link: https://www.youtube.com/watch?v=sCBgn0-JY8Q

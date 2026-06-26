@@ -1,0 +1,55 @@
+current:
+- name: Sigstore
+  description: Sigstore is an open source software signing framework that makes signing,
+    verifying, and protecting software artifacts easy and accessible for everyone.
+    It provides transparent, tamper-evident signatures and metadata, establishing
+    provenance for the software supply chain. Sigstore is part of the Cloud Native
+    Computing Foundation (CNCF) and is used by major platforms and tools worldwide.
+  link: https://www.sigstore.dev
+- name: in-toto
+  description: in-toto is a series of tools to describe how a software development
+    process should be performed, and to verify that such processes are followed properly.
+    By giving these tools to administrators and developers, end users can verify that
+    the software they are about to install is correct. This means that such a package
+    wasn't tampered in transit, or that no errors were made during the elaboration
+    of it.
+  link: https://in-toto.io
+- name: GUAC
+  description: GUAC (Graph for Understanding Artifact Composition) is an OpenSSF incubating
+    project that helps you make sense of your software supply chain. It ingests software
+    metadata, like SBOMs and vulnerability data, and maps the relationships between
+    different software components. This gives you actionable insights into your software's
+    security position.
+  link: https://guac.sh
+- name: sbom.dev
+  description: sbom.dev is an initiative to standardize how software contents are
+    described and shared through Software Bills of Materials (SBOMs). It provides
+    tools and guidelines to help developers and organizations create, parse, and use
+    SBOMs effectively, enabling transparency and better security across the software
+    supply chain.
+  link: https://sbom.dev
+previous:
+- name: The Update Framework (TUF)
+  description: The Update Framework (TUF) is a framework for securing software update
+    systems that protects the distribution of software updates, even when repositories
+    or signing keys are compromised. TUF provides a flexible specification that developers
+    can adopt into any software update system. Its early design was supported by the
+    Tor Project, and it has since matured into a CNCF graduated project used by many
+    major organizations.
+  link: https://theupdateframework.com
+- name: Briar
+  description: Briar is a mobile app that lets you communicate securely and privately
+    without relying on centralized servers. It uses Bluetooth, Wi-Fi, and Tor to maintain
+    synchronization between devices, with direct peer-to-peer communication. When
+    online, it uses an onion routing protocol; when offline, it uses Bluetooth or
+    Wi-Fi. It was a significant effort in designing decentralized, privacy-preserving
+    communication systems.
+  link: https://briarproject.org
+- name: NeoMutt
+  description: NeoMutt is a powerful and practical mail user agent (MUA) designed
+    for Unix-like systems. As a fork of the classic Mutt project, NeoMutt has evolved
+    to address modern email workflows while maintaining its reputation for speed,
+    configurability, and extensibility. It's a staple in the open-source email ecosystem
+    for users who prefer command-line interfaces and fine-grained control over their
+    email experience.
+  link: https://neomutt.org
