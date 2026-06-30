@@ -1,19 +1,63 @@
 ---
 layout: page
-title: Publications 
+title: Publications
 permalink: /publications/
 ---
 
-<h2>Journal Papers</h2>
-- "Towards Adding Verifiability to Web-Based Git Repositories." H. Afzali, *S. Torres-Arias*, R. Curtmola, J. Cappos. Journal of Computer Security, 2020 (Upcoming).
+{% assign conference_papers = site.data.publications.conference_papers %}
+{% assign journal_papers = site.data.publications.journal_papers %}
+{% assign magazine_articles = site.data.publications.magazine_articles %}
 
+{% if conference_papers %}
 <h2>Conference Papers</h2>
-- “in-toto: providing farm-to-table security guarantees for bits and bytes." *S. Torres-Arias*, H. Afzali, T. K. Kuppusamy, R. Curtmola, J. Cappos. 28th USENIX Security Symposium (USENIX Security '19) Santa Clara, CA 2019.
-- "Commit Signatures for Centralized Version Control Systems.", S. Vaidya, *S. Torres-Arias*, R. Curtmola, and J Cappos. 34th ICT Systems Security and Privacy Protection Conference (IFIP SEC '19). Lisbon, Portugal.
-- “le-git-imate: Towards Verifiable Web-Based Git Repositories.” H. Afzali, *S. Torres-Arias*, R. Curtmola, J. Cappos. 13th ACM ASIA Conference on Computer and Communications Security (ACM ASIACCS '18). Songbdo, Incheon, Korea.
-- “On Omitting Commits and Committing Omissions: Preventing Git Metadata Tampering That (Re)introduces Software Vulnerabilities.” S. Torres-Arias, A. Ammula, R. Curtmola, J. Cappos. 25th USENIX Security Symposium (USENIX Security ’16).  Austin, TX 2016
-- “Diplomat: Using Delegations to Protect Community Repositories.” T. Kuppusamy, S. Torres-Arias, V. Diaz, J. Cappos. 13th USENIX Symposium on Networked Systems Design and Implementation (NSDI ’16). Santa Clara, CA 2016
+<ul>
+{% for pub in conference_papers %}
+<li>
+<strong>{{ pub.title }}</strong><br>
+<em>{{ pub.authors }}</em><br>
+{{ pub.venue }} ({{ pub.year }}).
+{% if pub.doi %} 
+<a href="https://doi.org/{{ pub.doi }}">DOI: {{ pub.doi }}</a>
+{% elsif pub.link %}
+<a href="{{ pub.link }}">{{ pub.link }}</a>
+{% endif %}
+</li>
+{% endfor %}
+</ul>
+{% endif %}
 
+{% if journal_papers %}
+<h2>Journal Papers</h2>
+<ul>
+{% for pub in journal_papers %}
+<li>
+<strong>{{ pub.title }}</strong><br>
+<em>{{ pub.authors }}</em><br>
+{{ pub.venue }} ({{ pub.year }}).
+{% if pub.doi %} 
+<a href="https://doi.org/{{ pub.doi }}">DOI: {{ pub.doi }}</a>
+{% elsif pub.link %}
+<a href="{{ pub.link }}">{{ pub.link }}</a>
+{% endif %}
+</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% if magazine_articles %}
 <h2>Magazine Articles</h2>
-
-- “PolyPasswordHasher: Improving Password Storage Security” S. Torres, J. Cappos. ;login: pages 18-21, December, 2014.
+<ul>
+{% for pub in magazine_articles %}
+<li>
+<strong>{{ pub.title }}</strong><br>
+<em>{{ pub.authors }}</em><br>
+{{ pub.venue }} ({{ pub.year }}).
+{% if pub.doi %} 
+<a href="https://doi.org/{{ pub.doi }}">DOI: {{ pub.doi }}</a>
+{% elsif pub.link %}
+<a href="{{ pub.link }}">{{ pub.link }}</a>
+{% endif %}
+</li>
+{% endfor %}
+</ul>
+{% endif %}
