@@ -1,0 +1,828 @@
+\documentclass[letter, 11pt]{article} %{{{--
+
+\usepackage[
+	    top=1in,
+	    inner=1in,
+	    bottom=1in,
+        left=1in,
+        right=1in,
+	    twoside
+	    ]{geometry}
+
+\usepackage{calc}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{xcolor,hyperref}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{xifthen}% provides \isempty test
+
+\usepackage{wasysym} % For phone symbol
+\usepackage{eurosym}
+\usepackage{url}
+
+\def\bf{\bfseries}
+\def\sf{\sffamily}
+\def\sl{\slshape}
+
+% Blue colors -------------------------------------------
+\definecolor{deep_blue}{rgb}{0,.2,.5}
+\definecolor{dark_blue}{rgb}{0,.15,.5}
+\definecolor{myblue}{rgb}{.01,0.21,0.71}
+
+% Green colors -------------------------------------------
+\definecolor{deep_green}{rgb}{0,.5,.15}
+\definecolor{dark_green}{rgb}{0,.45,.1}
+\definecolor{mygreen}{rgb}{.01,0.45,0.11}
+
+% Orange colors -------------------------------------------
+\definecolor{SkoleBrown}{RGB}{150,100,50}
+\definecolor{SkoleYellow}{RGB}{232,183,3}
+\definecolor{SkoleOrange}{RGB}{252,135,36}
+\colorlet{SkoleLightBrown}{SkoleBrown!50!SkoleYellow}
+
+\colorlet{deep_orange}{SkoleLightBrown!60!black}
+\colorlet{dark_orange}{SkoleLightBrown!70!black}
+\colorlet{myorange}{SkoleLightBrown!60!black}
+
+% Magenta colors -------------------------------------------
+\definecolor{deep_magenta}{rgb}{.35,.1,.35}
+\definecolor{dark_magenta}{rgb}{.25,.04,.25}
+\definecolor{mymagenta}{rgb}{.3,0.11,0.3}
+
+
+\colorlet{deep_color}{deep_blue}
+\colorlet{dark_color}{dark_blue}
+\colorlet{mycolor}{myblue}
+
+
+\hypersetup{pdftex,  % needed for pdflatex
+  breaklinks=true,  % so long urls are correctly broken across lines
+  colorlinks=true,
+  urlcolor=mycolor,
+  linkcolor=dark_color,
+  %citecolor=darkgreen,
+  }
+
+
+%% This gives us fun enumeration environments. 
+\usepackage{enumitem}
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+%% Reference the last page in the page number
+%
+\usepackage{fancyhdr,lastpage}
+%\pagestyle{fancy}
+\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\lfoot{%\hspace{\footpageshift}%
+	\colorlet{mycolor}{black!60}\sffamily%
+	\color{black!60}\hfill\, %
+		    \qquad\url{http://sangy.xyz}
+		    \hfill\hfill
+		    Updated \today 
+		    \hfill\hfill
+                    \arabic{page} of \protect\pageref*{LastPage} %
+		    \quad\hfill\,}
+
+
+\newcommand{\makeheading}[1]%
+        {%\hspace*{-\marginparsep minus \marginparwidth}%
+         %\begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+         \begin{minipage}[t]{\textwidth}%
+                {\Large #1}\\%[-0.5\baselineskip]%
+                 \color{deep_color}{\rule{\columnwidth}{3pt}}%
+         \end{minipage}
+	 \vskip 1.\baselineskip plus 2\baselineskip minus 1.\baselineskip
+	}
+
+\newlength\sidebarwidth
+\setlength\sidebarwidth{4cm}
+
+\makeatletter
+\newcommand{\topic}[3][]%
+	 {\pagebreak[3]%
+	 \vskip 1\baselineskip plus 2.5\baselineskip minus 0.7\baselineskip
+	 \begin{minipage}{\textwidth}
+         \phantomsection\addcontentsline{toc}{section}{#2 #1}%
+         \nopagebreak\hspace{0in}%
+         \nopagebreak\begin{minipage}[t]{\linewidth}
+         \bf \sf
+         %\raggedleft \bf\sf 
+	 \color{deep_color}{\Large #2}
+	 \end{minipage}%
+	 \hfill
+	 \begin{minipage}[t]{\linewidth - \sidebarwidth}
+	 %\begin{minipage}[t]{0pt}
+	 \nopagebreak{\color{deep_color}%
+		    %\rule{0pt}{\baselineskip}%
+		    %\rule{\linewidth}{2.5pt}%
+		    %\llap{\raisebox{.3\baselineskip}{\sf #1}}%
+		    \vspace*{.1\baselineskip}%
+		    }%
+	 #3%
+	 \end{minipage}
+	 \end{minipage}}
+
+\newcommand{\smalltopic}[2]%
+	 {\pagebreak[2]%
+	 \vskip .5\baselineskip plus 2\baselineskip minus 0.4\baselineskip
+	 \begin{minipage}{\textwidth}
+	 %\hspace{-\marginparsep minus \marginparwidth}%
+         \phantomsection\addcontentsline{toc}{subsection}{#1}%
+         \nopagebreak\hspace{0in}%
+         \nopagebreak\begin{minipage}[t]{\sidebarwidth}
+         \raggedleft \bf\sf %\vskip -0.5\baselineskip
+	 \textcolor{dark_color}{\large #1}%
+	 \end{minipage}%
+	 \hfill%
+	 \ifthenelse{\isempty{#2}}%
+	    {%
+		    %\rule{\linewidth - \sidebarwidth}{.5pt}%
+	    }% if #2 is empty
+	    {%
+	    \begin{minipage}[t]{\linewidth - \sidebarwidth - .2cm}%
+		\nopagebreak{%
+		    %\vspace{-.7\baselineskip}%
+		    %\rule{\linewidth}{.5pt}%
+		    \vspace{.1\baselineskip}%
+		    }%
+		    #2%
+		\end{minipage}%
+	    }% if #2 is not empty
+	 \end{minipage}}
+
+\newcommand{\subtopic}[3][]%
+	 {\begin{minipage}{\textwidth}%
+	 %\vspace*{.4\baselineskip}%
+	 \vskip .3\baselineskip plus 1\baselineskip minus .3\baselineskip
+         \nopagebreak\begin{minipage}[t]{\sidebarwidth}
+	 % Super posh: using semi-bold condensed fonts. Works only with
+	 % lmodern
+         \raggedleft {\sf\fontseries{sbc}\selectfont #2}
+	 {\small\sl\\[-0.2\baselineskip] #1}
+	 \end{minipage}%
+	 \hfill
+	 \begin{minipage}[t]{\linewidth - \sidebarwidth - .2cm}
+	 #3%
+	 \end{minipage}%
+	 \vspace*{.2\baselineskip plus 1\baselineskip minus
+	 .2\baselineskip}%
+	 \end{minipage}%
+	 \pagebreak[1]%
+	 }
+
+\newcommand{\columnlist}[2]%
+	 {%
+	 \vskip .4\baselineskip plus 1\baselineskip minus .3\baselineskip
+	 % Super posh: using semi-bold condensed fonts. Works only with
+	 % lmodern
+         {\sf\bf ~ ~ #1}\\%
+	 \vspace*{-1.2em}%
+	 \begin{itemize}[leftmargin=2.8ex, itemsep=0.4ex, parsep=.5ex,
+		    itemindent=2ex, labelindent=0ex, labelsep=.5ex]
+
+	 #2%
+	 \end{itemize}%
+	 \vspace*{.2\baselineskip plus 1\baselineskip minus
+	 .2\baselineskip}%
+	 \pagebreak[1]%
+	 }
+
+
+\newcommand{\sidenote}[2]
+	 {\vspace*{-.2\baselineskip}\begin{minipage}{\textwidth}
+         \nopagebreak\hspace{0in}%
+         \nopagebreak\begin{minipage}[t]{\sidebarwidth - .2cm}
+         \raggedleft {#1}
+	 \end{minipage}%
+	 \hfill
+	 \begin{minipage}[t]{\linewidth - \sidebarwidth}
+	 #2%
+	 \end{minipage}%
+	 \vspace*{.5\baselineskip plus 1\baselineskip minus
+	 .2\baselineskip}%
+	 \end{minipage}}
+\makeatother
+
+% New lists environments 
+\newlist{outerlist}{itemize}{1}
+\setlist[outerlist]{font=\sffamily\bfseries, label=\textbullet}
+\setitemize{topsep=0ex, partopsep=0ex}
+\setdescription{font=\normalfont\sffamily\bfseries, itemsep=.5ex,
+    parsep=.5ex, leftmargin=3ex}
+
+\newcommand{\blankline}{\quad\pagebreak[2]}
+
+\def\mydot{\textcolor{deep_color}{\rule{1ex}{1ex}}}
+
+
+% Semi condensed bold
+\def\emph#1{{\sf\fontseries{sbc}\selectfont%
+	     \textcolor{deep_color!70!black}{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%--}}}%
+\begin{document}
+\makeheading{
+\begin{minipage}[B]{0.5\textwidth}
+    %\vfill
+    \vspace*{-.5\baselineskip}%
+    \parbox{18cm}{
+	\hskip -0.1cm
+	{\Huge\bf\sf \color{deep_color} Santiago %
+		\color{dark_color} T\huge \hskip -0.05cm ORRES-A\huge \hskip -0.05cm RIAS}
+	\\%[-.1\baselineskip]
+	\bf\sf Assistant Professor of ECE
+%    \\ (Updated January 2022)
+    }
+\end{minipage}
+\hfill
+\begin{minipage}[B]{8cm}
+    \raggedleft
+    \,\vskip -1em
+    \small
+
+    {\texttt {Email: \url{santiagotorres@purdue.edu}}}\\
+    {\texttt {GitHub: \href{https://github.com/SantiagoTorres}{github.com/SantiagoTorres}}}\\
+    {\texttt {Website: \url{https://sangy.xyz/} }}
+
+    \vspace*{-.5\baselineskip}%
+
+\end{minipage}
+}%
+
+\subtopic[]{Research interests}{
+    Software Supply Chain Security, Operating Systems, Privacy, Open Source
+    Security, Binary Analysis.
+    }
+
+
+\topic{Education}{~}
+    \subtopic[2015--2020]{\bf Ph.D}{ 
+        Computer Science \\ 
+        New York University: Tandon School of Engineering, U.S.
+    }
+
+    \subtopic[2013--2015]{\bf M.S.}{
+        Cyber Security\\ 
+        New York University: Polytechnic School of Engineering, U.S.
+    }
+    \subtopic[2007--2012]{\bf B.S.}{
+        Electrical and Telecommunications Engineering,\\
+        Universidad Iberoamericana, Mexico.
+    }
+
+
+\topic{Professional And Honor Society Memberships}{~}
+
+    \subtopic[2021--present]{\bf Member}{ 
+        Association of Computing Machinery (ACM)
+    }
+
+    \subtopic[2021--present]{\bf Member}{
+        Institute of Electrical and Electronics Engineering (IEEE)
+    }
+
+
+\topic{Awards and Honors}{}
+
+    \subtopic[Scholarship]{CONACyT}{
+        Mexican Council of Science and Technology Scholarship for outstanding Mexican
+        scholars studying abroad. (2015-2018)
+    }
+
+    \subtopic[Award]{Research}{ 
+        Pearl Brownstein Doctoral Research Award (2020)
+    }
+
+    \subtopic[Award]{Open Source}{
+        Google Open Source Peer Bonus (2021)
+    }
+
+    \subtopic[Award]{Teaching}{
+        Willfred ``Duke'' Hesselberth Award for Teaching Excelence (2022)
+    }
+
+
+
+\topic{\mbox{Experience}}{~}
+    \subtopic[Jan 2013 -- Aug 2013]{CDMX Justice Court}{
+        Infrastructure Security Consultant.
+    }
+    \subtopic[Jan 2013 -- May 2013]{Universidad Iberoamericana}{
+        High School Lecturer: fundamentals of programming.
+    }
+    \subtopic[May 2018--May 2020]{Control Plane}{
+        Cloud Native Security Research Engineer.
+    }
+    \subtopic[August 2020--current]{Purdue University}{
+        Assistant Professor Of Electrical and Computer Engineering
+    }
+
+\topic{Research Grants and Contracts Received}{}
+        \subtopic[2021]{Google (\$150,000)}{Gift to support the development of Sigstore}
+        \subtopic[2022-2023]{NSF \#2229703 (\$300,000)}{``POSE: Phase I: Scoping an Open Source Ecosystem Around Proactive Software Supply Chain Monitoring'' (Co-PI: James Davis)}
+        \subtopic[2022-2023]{Cisco (\$184,536)}{Monitor and Manage Security Risks in Software Supply Chains with Sigstore (Co-PI: James Davis)}
+        \subtopic[2022]{Google (\$200,000)}{Gift to support the development of the ``Graph for Understanding Artifact Composition'' (GUAC)}
+        \subtopic[2022]{Intel (\$5,000)}{Award for the support of the Supply Chain Offensive Research and Ecosystem Defenses (SCORED) workshop}
+        \subtopic[2023-2025]{Intel (\$180,000)}{``RV-C: Supply Chain Compliance Beyond SBOMs: Compliance Using Novel Abstractions To Reason about Software Artifacts''}
+        \subtopic[2023]{Google (\$200,000)}{Gift to support research on integration challenges of security technologies for open source}
+        \subtopic[2024]{NSF \#2350446 (\$600,000)}{SaTC: CORE: Small: Developing Holistic Systems to Secure the Machine Learning Supply Chain (PI: Zahra Ghodsi)}
+        \subtopic[2024]{NSF \#2346219 (\$1,500,000)}{NSF POSE: Phase II: Building an Open-Source Ecosystem to Secure Software Bills of Materials (PI: Justin Cappos)}
+        \subtopic[2026]{Bloomberg (\$180,000)}{Gift to Support the Development of Hardened Signing Tools for Financial Systems}
+
+
+
+
+\topic{Professional Society Activities}{}
+    \subtopic[IEEE]{Security \& Privacy Symposium (Workshops)}{
+        Program Committee 2026 \\
+    }
+
+    \subtopic[IEEE]{Security \& Privacy Symposium}{
+        Program Committee 2026 \\
+        Program Committee 2024 
+    }
+
+    \subtopic[ACM]{Asia Computer \& Communications Security}{
+        Program Committee 2024 \\
+    }
+
+    \subtopic[]{Computers \& Security Journal}{
+        Reviewer 2024 \\
+    }
+
+    \subtopic[ACM]{Transactions on Privacy \& Security}{
+        Reviewer 2024
+        Reviewer 2025 \\
+    }
+
+    \subtopic[USENIX]{USENIX Security Symposium}{
+        Program Committee 2025 \\
+        Program Committee 2023 \\
+        Program Committee 2022 \\
+        Artifact Evaluation Committee 2020 \\
+    }
+    \subtopic[]{Privacy Enhancing Technologies Symposium}{
+        External Reviewer 2023 \\ 
+        External Reviewer 2022 \\
+        External Reviewer 2021 \\
+    }
+    \subtopic[Internet Society]{Network \& Distributed Systems Security Symposium}{
+        Program Commitee 2023
+    }
+
+    \subtopic[IEEE]{Secure Development Conference}{
+        Program Committee 2026 \\ 
+        Program Committee 2025 \\ 
+        Organizing Committee 2024 \\ 
+        Organizing Committee 2023 \\ 
+        Organizing Committee 2022 \\
+        Organizing Committee 2021 
+    }
+ 
+    \subtopic[USENIX]{Workshop on Offensive Technologies}{
+        Artifact Evaluation Commitee 2020
+    }
+
+    \subtopic[IEEE]{SafeThings Workshop}{
+        Program Committee 2022 \\
+    }
+
+    \subtopic[Internet Society]{Binary Analysis Research Workshop}{
+        Program Committee 2023 \\ 
+    }
+
+    \subtopic[ACM]{Supply Chain Offensive Research and Ecosystem Defenses}{
+        Steering Committee 2026 \\
+        Steering Committee 2025 \\
+        Organizing Committee 2024 \\
+        Organizing Committee 2023 \\
+        Organizing Committee 2022
+    }
+
+
+\topic{Graduate Students Currently Supervising}{}
+    \subtopic{Ph.D. ECE(2020-)}{Eman Abdel-Muhd Abu Ishgair}
+    \subtopic{Ph.D. ECE(2022-)}{Chinenye Okafor}
+    \subtopic{Ph.D. ECE(2022-)}{Abhishek Reddypale} 
+    \subtopic{Ph.D. ECE(2023-)}{Fabiha Hashmat} 
+    \subtopic{Ph.D. ECE(2023-)}{Ayushi Sharma} 
+    \subtopic{Ph.D. ECE(2024-)}{Zeren Li} 
+    \subtopic{Ph.D. ECE(2025-)}{Adrian Persaud} 
+    \subtopic{M.S ECE(2022-2024)}{Sahithi Kasim} 
+
+ 
+\topic{Courses Developed}{}
+    \subtopic[]{Undergraduate}{ECE49595O: Open Source Software Senior Design Projects}
+    \subtopic[]{Graduate}{ECE69595HSS: Hardware \& Software Security}
+
+
+\topic{Courses Taught}{}
+    \subtopic[]{Fall 2025}{ECE69595: Hardware Software Security}
+    \subtopic[]{Spring 2025}{ECE59595: Advanced Software Engineering}
+    \subtopic[]{Fall 2024}{ECE56401: Computer Security}
+    \subtopic[]{Spring 2024}{ECE49595O: Open Source Software Senior Design Projects} 
+    \subtopic[]{Fall 2023}{ECE69595HSS: Hardware Software Security}
+    \subtopic[]{Spring 2023}{ECE49595O: Open Source Software Senior Design Projects} 
+    \subtopic[]{Fall 2022}{ECE59595: Advanced Software Engineering}
+    \subtopic[]{Spring 2022}{ECE49595O: Open Source Software Senior Design Projects} 
+    \subtopic[]{Fall 2021}{ECE368: Data Structures}
+    \subtopic[]{Spring 2021}{ECE9595: Open Source Software Senior Design Projects}
+
+
+\topic{School Committee Activities}{}
+    \subtopic[]{Fall 2020}{Senior Design Committee}
+    \subtopic[]{Spring 2021}{Senior Design Committee}
+    \subtopic[]{Fall 2021-Spring 2022}{Search Committee: Professor of Practice Signals and Systems}
+    \subtopic[]{Fall 2022-Spring 2023}{Search Committee: Professor of Practice and Tenure-Track Software Engineering} 
+    \subtopic[]{Fall 2023-Spring 2024}{Search Committee: ECE Department Head} 
+    \subtopic[]{Fall 2024-Spring 2025}{ECE Admissions Committee: CmpE Area} 
+    \subtopic[]{Fall 2025-Spring 2026}{Search Committee: Open-Rank Professor in Software Engineering} 
+
+
+%\vspace*{-.5\baselineskip}
+
+
+\topic{Journal Articles}{}
+
+    \subtopic[2020]{Journal of Computer Security}{
+        ``Towards Adding verifiability to Web-Based Git Repositories''. 
+        H. Afzali, {\bf S. Torres-Arias}, R. Curtmola, J. Cappos.
+    }
+
+    \subtopic[2022]{Journal of Computer Security}{
+        ``Towards Verifiable Web-Based Code Review Systems''. 
+        H. Afzali, {\bf S. Torres-Arias}, R. Curtmola, J. Cappos.
+    }
+
+\topic{Refereed Conference Proceedings and Presentations}{}
+
+     \subtopic{EuroS\&P '26}{
+         ``SoK: A Defense-Oriented Evaluation of Software Supply Chain Security''
+         E. Abu Isghair, J. Gomez, M. S. Melara, A. Cardenas, {\bf S. Torres-Arias}.
+     }
+
+     \subtopic[]{JAWS '26)}{
+        ``ARMS: A Vision for Actor Reputation Metric Systems in the Open-Source Software Supply Chain''
+        K.G. Kalu, S. Okorafor, B. Durak, K. Laine, R.C. Moreno, {\bf S. Torres-Arias}, J. C. Davis
+    }
+
+
+    \subtopic[]{USENIX '26}{
+        ``Petra: Trustworthy \& Confidential SBOM Exchange'',
+        E. Abu Isghair, C. Okafor, M. S. Melara {\bf S. Torres-Arias}
+    } 
+
+    \subtopic[]{USENIX '26}{
+        ``Why Johnny Signs with Sigstore: Examining Tooling as a Factor in Software Signing Adoption in the Sigstore Ecosystem'',
+        K. G. Kalu, S. Okorafor, T. Singla, {\bf S. Torres-Arias}, J. C. Davis
+    } 
+
+    \subtopic[]{USENIX '25}{
+        ``An industry interview study of software signing for supply chain security'',
+        K. G. Kalu, T. Singla, S. Okorafor, {\bf S. Torres-Arias}, J. C. Davis
+    } 
+
+    \subtopic[]{ICSE '25}{
+        ``$ZTD_{JAVA}$: Mitigating Software Supply Chain Vulnerabilities via Zero-Trust Dependencies.''
+        A. Paschal, K. A. Robinson, T. Singla, H. Peng, A. Machiry, {\bf S. Torres-Arias}, L. Simon, J. C. Davis
+    }
+
+    \subtopic[]{CCS '24}{
+        ``Rust for Embedded Systems: Current State, Challenges and Open Problems'',
+        A. Sharma, S. Sharma, {\bf S. Torres-Arias}, A. Machiry
+    } 
+
+    \subtopic[]{S\&P '24}{
+        ``Signing in four public software package registries: Quantity, quality, and influencing factors'',
+        T. R Schorlemmer, K. G Kalu, L. Chigges, K. Myung Ko, E. Abu Ishgair, S. Bagchi, {\bf S. Torres-Arias}, J. C Davis
+        
+    } 
+
+    \subtopic[]{CCWC '24}{
+        ``Should Smart Homes Be Afraid of Evil Maids?: Identifying Vulnerabilities in IoT Device Firmware'',
+        A. Knapp, E. Wamuo, M. Alam Rahat, {\bf S. Torres-Arias}, G. Bloom, Y. Zhuang
+    } 
+
+    \subtopic[]{CCS '23}{
+        ``Speranza: Usable, Privacy-friendly software signing'',
+        K. Merrill, Z. Newman, {\bf S. Torres-Arias}, K. R. Sollins
+    } 
+
+    \subtopic[]{IMC '23}{
+        ``Behind the Scenes: Uncovering TLS and Server Certificate Practice of IoT Device Vendors in the Wild'',
+        H. Dong, H. Shu, V. Prakash, Y. Zhang, M. Talha Paracha, D. Choffnes, {\bf S. Torres-Arias}, D. Y. Huang, Y. Sun
+    } 
+
+    \subtopic[]{CCS '22}{
+        ``Sigstore: Software Signing for Everybody'',
+        Z. Newman, JS Meyers, {\bf S. Torres-Arias}
+    } 
+
+    \subtopic[]{USENIX Security '19}{
+        ``in-toto: providing farm-to-table security properties to bits and bytes''. 
+        {\bf S. Torres-Arias}, H. Afzali, T. K. Kuppusamy, R. Curtmola, J. Cappos.
+    }
+
+    \subtopic[]{IFIPSEC '19}{
+        ``Commit Signatures for Centralized Version Control Systems''. 
+        S. Vaidya, {\bf S. Torres-Arias}, R. Curtmola and J. Cappos 
+    }
+
+    \subtopic[]{AsiaCCS '18}{
+        ``le-git-imate: Providing git security guarantees to web-based git repositories''. 
+        H. Azfali, {\bf S. Torres-Arias}, R. Curtmola, J. Cappos.
+    }
+    
+    \subtopic[]{USENIX Security '16}{
+        ``On Omitting Commits and Committing Omissions: Preventing Git metadata
+        tampering that (re)introduces vulnerabilities''. {\bf S. Torres-Arias},
+        A. Kumar Ammula, R. Curtmola, J. Cappos.  
+    }
+
+    \subtopic[]{NSDI '16}{
+        ``Diplomat: Using Delegations to Protect Community Repositories''. T. K. Kuppusamy,
+        V. Diaz, {\bf S. Torres-Arias}, J. Cappos.
+    }
+
+\topic{Pre-prints \& Under Review}{}
+
+    \subtopic{Conference Paper -- Pre-print (Under Review ICSME '26)}{
+     ``DebTrace: Tracing, Verifying, and Revisiting a Decade of Debian Reproducibility'' 
+       A. Reddypale, W. Boulton, {S. Torres-Arias}. 
+     }
+
+
+     \subtopic{Conference Paper -- Pre Print (Under Review CCS '26)}{
+        ``Landseer: Identifying Gaps in Trustworthy Machine learning systems integration''
+        A. Sharma, R. Agbozo, Z. Ghodsi, {\bf S. Torres-Arias}
+    }
+
+     \subtopic{Conference Paper -- Pre-Print (Under Review CCS '26)}{
+      ``Can SOLARBURST go silicon? A systematic analysis on software supply chain attacks for Open Source VLSI design''
+        F. Hashmat, {\bf S. Torres-Arias}
+     }
+
+     \subtopic{Conference Paper -- Pre-Print (Under Review CCS '26)}{
+      `` Panic! At The Distro: A Study of Malware Prevention in Linux Distributions''
+        D. Vu, T. Dunlap, T. Nguyen, K. Obermeier-Velazquez, P. Gibert, J. Meyers, {\bf S. Torres-Arias}
+     }
+
+    \subtopic{Conference Paper -- Pre-Print (Under Review CCS '26)}{
+        ``Software Dark Matter: Gazing at uncharted files to navigate SBOM integrations''
+        A. Reddypale, D. Roellke, {\bf S. Torres-Arias}
+    }
+
+     \subtopic{Conference Paper -- Under peer review  (ASE '26)}{
+     ``DiVerify: Hardening Identity-Based Software Signing with Diverse-Context Scopes''
+     C. Okafor, J. C. Davis, {\bf S. Torres-Arias}.
+     }
+
+
+    \subtopic{Conference Paper -- Pre-print}{
+     ``\{PASS\}: Gaining the Higher Ground Against Password Crackers'' 
+       J. Cappos, A. Persaud, {\bf S. Torres-Arias}. 
+     }
+
+
+
+
+\topic{Posters, Brief Announcements, Etc.}{}
+
+    \subtopic[IEEE S\&P]{Magazine}{
+        ``Establishing provenance before coding: Traditional and next-generation software signing'' IEEE Security \& Privacy Magazine 23 (2) '25
+
+    }
+    \subtopic[IEEE S\&P]{Magazine}{
+        ``A Viewpoint on Knowing Software: Bill of Materials Quality When You See It''. IEEE Security \& Privacy Magazine 21 (6) '23
+    }
+    \subtopic[IEEE S\&P]{Magazine}{
+        ``A Viewpoint on Software Supply Chain Security: Are We Getting Lost in Translation?''. IEEE Security \& Privacy Magazine 21 (6) '23
+    }
+    \subtopic[]{Poster}{
+        ``PolyPasswordHasher: no password left behind''. New England Networking and Systems Day '14
+    }
+
+\topic{Refereed Workshops}{}
+
+    \subtopic[]{Supply Chain Offensive Research and Ecosystem Defenses (SCORED)}{
+        ``SoK: Analysis of Software Supply Chain Security by Establishing Secure Design Properties''.
+        C. Okafor, T. R Schorlemmer, S. Torres-Arias, J C Davis
+    }
+
+    \subtopic[]{New Security Paradigms Workshop '21}{
+        ``COLBAC: Shifting Cybersecurity from Hierarchical to Horizontal Designs''. 
+        K. Gallagher, {\bf S. Torres-Arias}, J. Feldman, N. Memon. 
+    }
+
+\smalltopic{Standards, Patents, etc.}{}
+    \subtopic[NIST]{Special Publication 800-204D}{
+        ``Strategies for the Integration of Software Supply Chain Security in DevSecOps CI/CD pipelines''.
+        R. Chandramouli, F. Kautz, {\bf S. Torres-Arias}
+    }
+
+ 
+\smalltopic{Invited Talks}{}
+    \subtopic[]{Talk}{
+        ``A retrospective on the lsat decade of software supply chain security systems building'' 1st NSF/MITRE cyber-resiliency forum, November 3 '25
+    }
+    \subtopic[]{Talk}{
+        ``Idetifying and preventing open source vulnerabilities using Knowledge Graphs'' Intel Research Summit, September 7, '25 
+    }
+    \subtopic[]{Panel}{
+        ``AI and Cybersecurity'' 1st Purdue Silicon Valley Innovation Summit, July 27 '25
+    }
+    \subtopic[]{Seminar}{
+        ``Identifyng and preventing open source vulnerabilities using Knowledge Graphs'' Microsoft Azure Internal Seminar, June 20 '25
+    }
+    \subtopic[]{Panel}{
+        ``Open Source Malware or a Vulnerability? The Philosophical Debate and How To Mitigate'' KubeCon EU, April 3rd '25
+    }
+    \subtopic[]{Keynote}{
+        ``Keynote: it is not the SBOM's fault'' SBOMit Summit. March 3, '25
+    }
+    \subtopic[]{Seminar}{
+        ``Asegurando la Cadena de Suministros'' (In spanish) National Autonomous University of Mexico (UNAM), Mexico. June 2y, '25
+    }
+    \subtopic[]{Seminar}{
+        ``Usable-privacy friedly software signing'' NOVA University, Portugal . February 25, '25
+    }
+    \subtopic[]{Keynote}{
+        ``Keynote: open source software security is not an expectator sport'' Kubecon. November 18, '24
+    }
+    \subtopic[]{Talk}{
+        ``Enforceable Software Supply Chain Policies and Attestations Using in-Toto'' KubeCon Europe '24
+    }
+    \subtopic[]{Interview}{
+        ``KubeCon Special: Sigstore with Santiago Torres-Arias'' Software Engineering Dialy. December 3, '23
+    }
+    \subtopic[]{Talk}{
+        ``Software Supply Chain Security'' Cisco Research: Software Supply Chain Security Summit '23
+    }
+    \subtopic[]{Talk}{
+        ``Sigstore: Software Signing for Everybody'' Hot Topics on Science of Security (organized by the NSA) '23
+    }
+    \subtopic[]{Talk}{
+        ``All Things in-Toto: Supply Chain Attestations, Policies and Adoption Stories, Oh My!'' KubeCon '23
+    }
+    \subtopic[]{Interview}{
+        ``PSW \#776 – Santiago Torres Arias'' Paul's Security Weekly  March 7, '23
+    }
+    \subtopic[]{Talk}{
+        ``Software Dark Matter is the enemy of transparency'' CloudNativeSecurityCon, '23
+    }
+    \subtopic[]{Talk}{
+        ``Securing Your Software Supply Chain With in-toto'' KubeCon '22
+    }
+    \subtopic[]{Panel}{
+        ``Software Supply Chain Security''. Qualcomm Product Security Summit
+    }
+    \subtopic[]{Panel}{
+        ``Panel Discussion: Software Supply Chain Security''. CERIAS Symposium '22
+    }
+    \subtopic[]{Panel}{
+        ``Panel Discussion: Ransoming America''. CERIAS Symposium '21
+    }
+    \subtopic[]{Panel}{
+        ``Roundtable: Software Supply Chain Challenges – What’s in Your Software?'' DashCon '21
+    }
+    \subtopic[]{Talk}{
+        ``Verifiability for Source Code Repositories''. Microsoft Research Summit '21
+    }
+    \subtopic[]{Talk}{
+        ``in-toto, TUF and SigStore: Software Supply Chain security and Transparency''. Pacific Northwest National Laboratory Cybersecurity Summit '21
+    }
+    \subtopic[]{Talk}{
+        ``Securing the Software Supply Chain with in-toto''. Kubecon '19
+    }
+    \subtopic[]{Talk}{
+        ``Software Supply Chain Security''. DevOpsWorld '19
+    }
+    \subtopic[]{Talk}{
+        ``in-toto: Securing the whole supply chain''. DockerCon '19
+    }
+    \subtopic[]{Talk}{
+        ``Sig-security: Deep Dive'', CNCF, ``KubeCon \& CloudNativeCon''. Kubecon '18
+    }
+    \subtopic[]{Talk}{
+        ``Securing the whole supply chain with TUF \& in-toto''. DockerCon '17
+    }
+    \subtopic[]{Talk}{
+        ``PolyPasswordHasher: no password left behind''. Army Cyber Institute CyberTalks '16
+    }
+
+
+%    \subtopic[]{Login; 2014}{
+%        ``PolyPasswordHasher: Improving Password Storage Security'', {\bf S. Torres-Arias}, J. Cappos.
+%    }
+\smalltopic{Software Artifacts}{}
+    \subtopic{SBOMit}{https://sbomit.dev}
+    \subtopic{GUAC}{https://guac.sh}
+    \subtopic{Sigstore}{https://sigstore.dev}
+    \subtopic{in-toto}{https://in-toto.io}
+    \subtopic{PolyPasswordHasher}{https://pph.io}
+
+%\vspace*{-1\baselineskip}
+\smalltopic{Press}{}
+    \subtopic{Aikido Security}{Top 12 software supply chain security tools in 2026 (Dec 16, 2025)}
+    \subtopic{GitHub Blog}{Immutable released are now generaly available (Oct 28, 2025)}
+    \subtopic{Palo Alto Networks}{What is the Software Development LifeCycle (SDLC)? (Jul 3, 2025)}
+    \subtopic{InfoQ}{CNCF Graduates in-toto, Bolstering Software Supply Chain Security (Jun 23, 2025)}
+    \subtopic{Google Blog}{Taming the wild Weest of ML: Practical Model Signing with Sigstore (Apr 4, 2025)}
+    \subtopic{Sonatype}{Central Publisher Portal Now Validates Sigstore Signatures (Jan 29, 2025)}
+    \subtopic{TechTarget}{IT pros revise pipelines for software supply chain security (November 21, 2024)}
+    \subtopic{ExecutiveGov}{New NIST Special Publication Shines Light on Security of Cloud Software Supply Chains (February 14, 2024)}
+    \subtopic{MIT News}{Boosting faith in the authenticity of open source software (December 11 2023)}
+    \subtopic{The Stack}{JPMorgan’s Global CISO urges use of Sigstore, Alpha-Omega in open source security drive (October 5 2023)}
+    \subtopic{InfoQ}{Google Announces Graph for Understanding Artifact (GUAC) v0.1  (Jul 17 2023)}
+    \subtopic{InfoWorld}{Sigstore: Roots of trust for software artifacts (May 15 2023)}
+    \subtopic{The Conversation}{What is Log4j? A cybersecurity expert explains the latest internet vulnerability, how bad it is and what’s at stake (December 2021)}
+    \subtopic{Wired}{A New Tool Wants to Save Open Source From Supply Chain Attacks (June 2021)}
+    \subtopic{ProPublica}{The U.S. Spent \$2.2 Million on a Cybersecurity System That Wasn’t Implemented — and Might Have Stopped a Major Hack (Feb 2021)}
+    \subtopic{ACM Tech News}{Free Tool Adds Layer of Security For The Software Supply Chain (December 2020)}
+    \subtopic{Palo Alto Networks}{Cloud Native Technologies Spotlight: Advancements in Serverless, Software Supply Chain Security, The State of CLoud Native Security (July 2020)}
+    \subtopic{The New Stack}{Shifting Cloud Native Security All the Way Left (November 2019)}
+    \subtopic{Sysdig blog}{33(+) Kubernetes security tools (July 2019)}
+    \subtopic{LWN}{Securing the container image supply chain (May 2018)}
+    \subtopic{eWeek News}{How The Update Framework Improves Software Distribution Security (July 2018)}
+    \subtopic{The New Stack}{Security in Kubernetes -- A Look at Different Projects (May 2018)}
+    \subtopic{Google GCP Blog}{Exploring container security: Digging into Grafeas container image metadata (April 2018)}
+
+
+    
+% \smalltopic{School Committee Activities}{}
+%     \subtopic[2021]{Member}{Search Committee: Professor of Practice}
+%     \subtopic[2020]{Member}{Senior Design Committee}
+
+%\smalltopic{Courses Prepared}{}
+%    \subtopic[2022]{ECE 49595}{Open Source Software Senior Design Projects}
+%
+%$\smalltopic{Mentoring}{}
+%$    \subtopic{Ph.D.}{Vineet Mohanty (Co-advised with Prof. Brunswicker, Spring 2021-current)}
+%$    \subtopic{Ph.D.}{Eman Abdel-Muhd Abu Ishgair (September 2020-current)}
+%$    \subtopic{M.S.}{Aditya Saky (internship at Amazon, now PhD at NYU)}
+%$    \subtopic{Undergraduate}{Kristel Fung (now at Berkeley), Shuyuan Luo (now at Facebook), Deepali Gupta (now
+%$    at Microsoft), Sachit Malik, Shiker Verma, Yashriv Srivastav, Michael Zhou}
+%$    \subtopic{High-school}{Emmet Chen-Ran (now at Yale), Andrew Benz (now at
+%$    Cornell), Christopher Lo (Winner of the WAC research competition, now at
+%$    Georgia Tech)}
+%$
+%$\smalltopic{Volunteering}{}
+%$
+%$    \subtopic[July 2015 - current]{Arch Linux}{I have a very close relationship
+%$    with the Arch Linux community. I am part of the Arch Linux Security Team,
+%$    and I am able to coordinate the Q/A and testing processes. I also have
+%$    developer access to tools such as the CVE Tracker infrastructure, the
+%$    official Arch Linux Docker image, and and IPXE release toolchain. I am also
+%$    trusted to publish packages in the official repositories.
+%$    }
+%$
+%$    \subtopic[May 2015 - current]{Reproducible Builds}{
+%$        I've participated with the community to submit multiple patches and fix
+%$        reproducibility errors in OSS toolchains and software. I have helped
+%$        the community integrate in-toto and stress-test reproducibility on Arch
+%$        Linux.
+%$    }
+%$
+
+
+%     \subtopic[Graduate]{Aditya Saky}{in-toto: integration into highly-distributed supply chains}
+%     \subtopic[Undegraduate]{Shuyuan Luo}{PolyPasswordHasher: integrating into PAM authentication systems (now at Facebook)}
+%     \subtopic[Undegraduate]{Deepali Gupta}{PolyPasswordHasher: Statistical analysis of k-r password cracking (now at Microsoft)}
+%     \subtopic[Undegraduate]{Sachit Malik}{in-toto: Extending the built-in inspection language }
+%     \subtopic[Undegraduate]{Skhiker Verma}{in-toto: Extending the built-in inspection language }
+%     \subtopic[Undegraduate]{Yashriv Srivastav}{in-toto: Implementing publicly-auditable Debian rebuilders}
+%     \subtopic[Undergraduate]{Michael Zhou}{in-toto: improving logging facilities}
+%     \subtopic[High-School]{Emmet Chen-Ran}{PolyPasswordHasher implementation on non-blocking javascript frameworks (now at Yale)}
+%     \subtopic[High-School]{Andrew Benz}{PolyPasswordHasher: a hardware token implementation based off of FIDO U2F (now at Cornell)}
+%     \subtopic[High-School]{Christopher Lo}{PolyPasswordHasher: using FIDO2 tokens for authentication (Winner at WAC research competition)}
+% 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \topic{Technical Skills}{}
+%     \subtopic{programming languages}{C, Python, Java, Rust, shellscript
+%     (bash/zsh/POSIX variants), ASM (x86, PIC, MSP430, RISCV), MATLAB/Octave,
+%     Objective-C, PHP, SQL, JS, Go and C++.}
+% 
+%     \subtopic{Frameworks/API's/etc}{Django, OpenGL, pydasm, iOS/Cocoa,
+%     Android, Travis (CI)}
+%                 
+%     \subtopic{domain-specific knowledge}{Systemd Unit writing, system
+%     tracing, automated debugging, and application profiling.}
+% 
+%     \subtopic{Operating Systems}{Linux (Debian, RedHat, Arch, LFS variants),
+%     Windows, MacOS, Minix.}
+% 
+%     \subtopic{Everyday tools}{Vim, git, tmux, neomutt, gdb, radare2, ansible,
+%         vagrant, coreos, docker}
+
+% \smalltopic{Languages}{
+%     Spanish -- Native proficiency, English -- 107 TOEFL IBT, French -- B1 DELFT.
+% }
+\end{document}

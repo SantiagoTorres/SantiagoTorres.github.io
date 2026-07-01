@@ -1,0 +1,32 @@
+---
+layout: post
+title:  "Musings on the Petrie Multiplier"
+date:   2019-10-03 21:00:00 -0400
+categories: Equality Viz
+---
+
+I was (not so) recently made aware about the existence of the Petrie
+multiplier. A mathematical "proof" of how the ratio between ingroups (e.g.,
+men) and outgroups (you guessed right, women) can have an effect on how
+the average experience of a member of the outgroup will look like. I'm
+oversimplifying things here, so if you're interested on reading in depth you
+can take a look [here](FIXME).
+
+Now, I'm a very visual person so I decided to quickly sketch some code and show
+a graph of how this would look like. You can take a look at the graph down
+below.
+
+% the vis here
+
+The Rules of the game are simple:
+
+- We define a numbered set of people
+- We define a ratio between ingroup/outgroup (men, and women)
+- We also define a fixed number of instances of events
+
+With these, we are able to see how experiences vary: when the ratio is very
+close to .50, the experience is pretty sensitive to the amount of incidents
+(well, obviously). However, what's particularly interesting is how the
+experience becomes very sensitive to the ratio. Even with a small number of
+incidents, a very uneven ratio will have a drastic effect on the average
+outgroup experience.
